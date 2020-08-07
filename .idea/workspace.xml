@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f12dfc3a-849f-44a2-af3a-8e179ea6e8e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/csvdata/dadoscorona2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boards/scrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/boards/scrap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boards/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/boards/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1felo9atO3k4F0at4QfRxBCYlJT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -48,7 +53,26 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dadoscorona" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mathe\Desktop\Projeto2_CES22\static\csvdata" />
+      <recent name="C:\Users\mathe\Desktop\Projeto2_CES22" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -68,7 +92,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -78,9 +104,37 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="526" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596746491853">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="526" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1596746491853" />
+    <state x="499" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596742816600">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="499" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.834@0.0.1536.834" timestamp="1596742816600" />
+    <state x="424" y="13" key="CommitChangelistDialog2" timestamp="1596826075209">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="424" y="13" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596826075209" />
+    <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1596824302183">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1596824302183" />
     <state x="1842" y="187" key="SettingsEditor" timestamp="1596586897621">
       <screen x="1360" y="0" width="1920" height="1080" />
     </state>
     <state x="1842" y="187" key="SettingsEditor/1360.0.1920.1080/0.27.1360.741@1360.0.1920.1080" timestamp="1596586897621" />
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1596811665888">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1536.834@0.0.1536.834" timestamp="1596811665888" />
+    <state x="465" y="243" key="com.intellij.ide.util.TipDialog" timestamp="1596818773894">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="465" y="243" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1596818773894" />
+    <state x="578" y="335" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596808251219">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="578" y="335" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1596808251219" />
   </component>
 </project>

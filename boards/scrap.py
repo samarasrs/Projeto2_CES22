@@ -1,7 +1,11 @@
-
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-
+import matplotlib.pyplot as plt
+import io
+import urllib
+import base64
+from urllib import parse
 
 #file = open("casos.txt","+w")
 
@@ -42,3 +46,26 @@ def Scrap():
     diaria = Numeros(total,mortes,recuperados)
     #file.close()
     return diaria
+
+def getgraphicbrasil():
+    x = pd.read_csv(r"C:\Users\mathe\Desktop\dadoscorona\dadoscorona2.csv", usecols=["casosAcumulado", "casosNovos", "obitosAcumulado", "Recuperadosnovos"], nrows=160)
+    x.plot()
+    fig = plt.gcf()
+    fig.set_facecolor("lightslategray")
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri
+def getgraphicSP():
+    x = pd.read_csv(r"C:\Users\mathe\Desktop\dadoscorona\dadoscorona2.csv", usecols=["casosAcumulado", "casosNovos", "obitosAcumulado", "Recuperadosnovos"],skiprows=[i for i in range(1,3282)] ,nrows=160)
+    x.plot()
+    fig = plt.gcf()
+    fig.set_facecolor("lightslategray")
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    return uri

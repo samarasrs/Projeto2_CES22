@@ -125,7 +125,7 @@ http://www.tooplate.com/view/2102-constructive
 					<!-- section 3 -->
 					<section id="tm-section-3" class="tm-section">						
 						<div class="row mb-4">
-							<header class="col-xl-12"><h2 class="tm-text-shadow">Caos por Região</h2></header>		
+							<header class="col-xl-12"><h2 class="tm-text-shadow">Casos por Região</h2></header>
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
@@ -135,23 +135,27 @@ http://www.tooplate.com/view/2102-constructive
 										<h3>Total de Casos</h3>
 										<p>{{ numerodiario.mortes }}</p>	
 									</div>
-								</div>
+								</div>py
 							</div>	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
+
 									<div class="media-body">
-										<h3>Free Images</h3>
-										<p>Photos by <a href="https://unsplash.com" target="_blank">Unsplash.com</a> website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<h3>Brasil</h3>
+										<p>No eixo y temos o número de casos.</p>
+										<img src = "data:image;base64,{{ graficobrasil }}" alt="" height="400", width="400">
+										<p>No eixo x temos as semanas.</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-fly mr-4 tm-icon-circled tm-icon-media"></i>
+
 									<div class="media-body">
-										<h3>Phasellus eleifend</h3>
-										<p>Phasellus feugiat scelerisque sapien, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>		
+										<h3>Em São Paulo</h3>
+										<img src = "data:image;base64,{{ graficoSP }}" alt="" height="400", width="400">
+										<p>No eixo y temos o números de casos em São Paulo.</p>
+										<p>No eixo x temos as semanas.</p>
 									</div>
 								</div>
 							</div>
