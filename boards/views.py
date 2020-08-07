@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Board
+from .scrap import Numeros,Scrap
 
 # Create your views here.
 #from django.http import HttpResponse
@@ -9,4 +10,5 @@ def home(request):
     return render(request,'home.html',{'boards':boards})
 
 def index(request):
-    return render(request,'index.html')
+    numerodiario = Scrap()
+    return render(request,'index.html',{'numerodiario':numerodiario})

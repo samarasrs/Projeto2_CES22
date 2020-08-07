@@ -61,7 +61,7 @@ http://www.tooplate.com/view/2102-constructive
 								</a>
 							</li>
 							<li>
-								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.jpg" data-page="#tm-section-2" data-page-type="carousel">
+								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.png" data-page="#tm-section-2" data-page-type="carousel">
 									<i class="fas fa-users tm-nav-fa-icon"></i>
 									<span>Números</span>
 								</a>
@@ -96,11 +96,28 @@ http://www.tooplate.com/view/2102-constructive
 					</section>
 
 					<!-- section 2 -->
-					<section id="tm-section-2" class="tm-section tm-section-carousel">
-						<div>
-							<header class="mb-4"><h2 class="tm-text-shadow">Números</h2></header>		            
-							<div class="tm-img-container">
-								
+					<section id="tm-section-2" class="tm-section">
+						<div class="row mb-4">
+							<header class="col-xl-12"><h2 class="tm-text-shadow">Números Totais no Brasil</h2></header>		
+						</div>
+						<div class="row">		            
+							<div class="col-md-5 mb-4">
+								<div class = "align-middle tm-bg-transparent-black tm-border-white">
+									<h2>Casos</h2>
+									<p>{{ numerodiario.total }}</p>
+								</div>	
+							</div>
+							<div class="col-md-5 mb-4">
+								<div class = "tm-bg-transparent-black tm-border-white">
+									<h2>Mortes</h2>
+									<p>{{ numerodiario.mortes }}</p>
+								</div>	
+							</div>
+							<div class="col-md-5 mb-4">
+								<div class = "tm-bg-transparent-black tm-border-white">								
+									<h2>Recuperados</h2>
+									<p>{{ numerodiario.recuperados }}</p>
+								</div>	
 							</div>		            		          
 						</div>       		          	
 					</section>
@@ -113,10 +130,10 @@ http://www.tooplate.com/view/2102-constructive
 						<div class="row">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+									<!--<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>-->
 									<div class="media-body">
-										<h3>HTML Templates</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about <a href="https://plus.google.com/+tooplate" target="_parent">Tooplate</a> website. Thank you.</p>	
+										<h3>Total de Casos</h3>
+										<p>{{ numerodiario.mortes }}</p>	
 									</div>
 								</div>
 							</div>	
@@ -220,7 +237,7 @@ http://www.tooplate.com/view/2102-constructive
 				background: url('{% static "/img/constructive_bg_01.jpg" %}') no-repeat -9999px -9999px; 
 			}
 			#preload-02{
-				background: url('{% static "/img/constructive_bg_02.jpg" %}') no-repeat -9999px -9999px; 
+				background: url('{% static "/img/constructive_bg_02.png" %}') no-repeat -9999px -9999px; 
 			}
 			#preload-03{
 				background: url('{% static "/img/constructive_bg_03.jpg" %}') no-repeat -9999px -9999px; 
