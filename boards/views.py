@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Board
+#from .models import Board
 from .scrap import Numeros,Scrap
 
 # Create your views here.
