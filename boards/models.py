@@ -27,3 +27,4 @@ class SaoPauloData(models.Model):
 
     def __str__(self):
         return "{}-{}-{}".format(self.date, self.cases, self.deaths)
+
