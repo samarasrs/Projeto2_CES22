@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f12dfc3a-849f-44a2-af3a-8e179ea6e8e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/Projeto2_CES22/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projeto2_CES22/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +43,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -73,6 +69,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
