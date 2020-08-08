@@ -33,3 +33,4 @@ virtualenv==20.0.1
 virtualenvwrapper-win==1.2.5
 whitenoise==5.2.0
 xlrd==1.2.0
+python==3.8.1

@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04f7a03a-e1ef-4759-af92-98948db3782d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/Procfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/Procfile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,21 @@
       <option name="project" value="LOCAL" />
       <updated>1596873197819</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <created>1596873419885</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596873419885</updated>
+    </task>
+    <task id="LOCAL-00003" summary=".">
+      <created>1596873608895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596873608895</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,22 +115,23 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="primeiro teste do heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="primeiro teste do heroku" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="13" key="CommitChangelistDialog2" timestamp="1596873418311">
+    <state x="424" y="13" key="CommitChangelistDialog2" timestamp="1596873607353">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="424" y="13" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596873418311" />
+    <state x="424" y="13" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1596873607353" />
     <state x="386" y="122" key="SettingsEditor" timestamp="1596871436595">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="386" y="122" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1596871436595" />
     <state x="1842" y="187" key="SettingsEditor/1360.0.1920.1080/0.27.1360.741@1360.0.1920.1080" timestamp="1596586897621" />
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1596873426989">
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1596873614491">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596873426989" />
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596873614491" />
     <state x="467" y="115" width="874" height="640" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1596866953812">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
