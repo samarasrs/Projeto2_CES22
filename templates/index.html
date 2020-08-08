@@ -17,14 +17,12 @@ http://www.tooplate.com/view/2102-constructive
 	<script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
-    <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="//github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
+
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
 	<link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
@@ -140,6 +138,32 @@ http://www.tooplate.com/view/2102-constructive
 							<header class="col-xl-12"><h2 class="tm-text-shadow">Casos por Região</h2></header>
 						</div>
 						<div class="row">
+
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style=" background: white">
+									<div id="mapChart" style="height: 400px; width: 400px;"></div>
+								</div>
+
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style=" background: white">
+									<div id="mapChart2" style="height: 400px; width: 400px;"></div>
+								</div>
+
+							</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_casesR" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_deathsR" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
 
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div style="heigth:400px; background: white">
@@ -695,6 +719,197 @@ http://www.tooplate.com/view/2102-constructive
 					}]
 				}
 			}
+		});
+
+
+
+	</script>
+
+	<script>
+
+		// Prepare demo data
+		// Data is joined to map using value of 'hc-key' property by default.
+		// See API docs for 'joinBy' for more info on linking data and map.
+		var data = {{ dados_estados.cases_estados|safe }};
+
+		// Create the chart
+		Highcharts.mapChart('mapChart', {
+			chart: {
+				map: 'countries/br/br-all'
+			},
+
+			title: {
+				text: 'Casos confimados por Estado'
+			},
+
+			subtitle: {
+				text: ''
+			},
+
+			mapNavigation: {
+				enabled: true,
+				buttonOptions: {
+					verticalAlign: 'bottom'
+				}
+			},
+
+			colorAxis: {
+				min: 0
+			},
+
+			series: [{
+				data: data,
+				name: 'Casos confirmados',
+				states: {
+					hover: {
+						color: '#BADA55'
+					}
+				},
+				dataLabels: {
+					enabled: false,
+					format: '{point.name}'
+				}
+			}]
+		});
+
+
+	</script>
+
+<script>
+
+		// Prepare demo data
+		// Data is joined to map using value of 'hc-key' property by default.
+		// See API docs for 'joinBy' for more info on linking data and map.
+
+		var data = {{ dados_estados.deaths_estados|safe }};
+
+		// Create the chart
+		Highcharts.mapChart('mapChart2', {
+			chart: {
+				map: 'countries/br/br-all'
+			},
+
+			title: {
+				text: 'Óbitos confimados por Estado'
+			},
+
+			subtitle: {
+				text: ''
+			},
+
+			mapNavigation: {
+				enabled: true,
+				buttonOptions: {
+					verticalAlign: 'bottom'
+				}
+			},
+
+			colorAxis: {
+				min: 0
+			},
+
+			series: [{
+				data: data,
+				name: 'Óbitos confirmados',
+				states: {
+					hover: {
+						color: '#BADA55'
+					}
+				},
+				dataLabels: {
+					enabled: false,
+					format: '{point.name}'
+				}
+			}]
+		});
+
+
+	</script>
+
+	<script>
+
+		var ctx = document.getElementById('myChart_deathsR').getContext('2d');
+		var myChart_deathsR = new Chart(ctx, {
+			type: 'polarArea',
+
+			data: {
+				labels: {{ dados_regiao.names_regiao|safe }},
+				datasets: [{
+					label: 'óbitos confirmados',
+					data: {{ dados_regiao.deaths_regiao|safe }},
+					backgroundColor: [
+
+						'rgba(255, 99, 132, 0.5)',
+						'rgba(54, 162, 235, 0.5)',
+						'rgba(255, 206, 86, 0.5)',
+						'rgba(75, 192, 192, 0.5)',
+						'rgba(153, 102, 255, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: true},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados por Região"
+            },
+			}
+		});
+
+
+
+	</script>
+	<script>
+
+		var ctx = document.getElementById('myChart_casesR').getContext('2d');
+		var myChart_casesR = new Chart(ctx, {
+			type: 'polarArea',
+
+			data: {
+				labels: {{ dados_regiao.names_regiao|safe }},
+				datasets: [{
+					label: 'casos confirmados',
+					data: {{ dados_regiao.cases_regiao|safe }},
+					backgroundColor: [
+
+						'rgba(255, 99, 132, 0.5)',
+						'rgba(54, 162, 235, 0.5)',
+						'rgba(255, 206, 86, 0.5)',
+						'rgba(75, 192, 192, 0.5)',
+						'rgba(153, 102, 255, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: true},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Casos Confirmados por Região"
+            },
+			}
+
 		});
 
 

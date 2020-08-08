@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export import resources
-from .models import BrazilData, SaoPauloData, SudesteData
+from .models import BrazilData, SaoPauloData, SudesteData, EstadosData, RegiaoData
 from import_export.admin import ImportExportModelAdmin
 
 
@@ -48,5 +48,28 @@ class SaoPauloDataAdmin(ImportExportModelAdmin):
 
 admin.site.register(SaoPauloData, SaoPauloDataAdmin)
 
+
+class EstadosDataResource(resources.ModelResource):
+    class Meta:
+        model = EstadosData
+
+
+class EstadosDataAdmin(ImportExportModelAdmin):
+    resource_class = EstadosDataResource
+
+
+admin.site.register(EstadosData, EstadosDataAdmin)
+
+
+class RegiaoDataResource(resources.ModelResource):
+    class Meta:
+        model = RegiaoData
+
+
+class RegiaoDataAdmin(ImportExportModelAdmin):
+    resource_class = RegiaoDataResource
+
+
+admin.site.register(RegiaoData, RegiaoDataAdmin)
 
 # Register your models here.

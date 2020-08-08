@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .scrap import Numeros,Scrap
 from django.views.generic import TemplateView
 from django.http import HttpResponse
-from .models import BrazilData, SudesteData, SaoPauloData
+from .models import BrazilData, SudesteData, SaoPauloData, EstadosData, RegiaoData
 
 '''
 class DataChartView(TemplateView):
@@ -31,7 +31,9 @@ def index(request):
     dados = getBrazilData()
     dados_sudeste = getSudesteData()
     dados_sp = getSaoPauloData()
-    context = {'numerodiario':numerodiario, 'dados':dados,'dados_sudeste':dados_sudeste, 'dados_sp':dados_sp
+    dados_regiao= getRegiaoData()
+    dados_estados= getEstadosData()
+    context = {'numerodiario':numerodiario, 'dados':dados,'dados_sudeste':dados_sudeste, 'dados_sp':dados_sp, 'dados_regiao':dados_regiao, 'dados_estados':dados_estados
              }
     return render(request, 'index.html', context)
 
@@ -53,7 +55,6 @@ def getBrazilData():
         deaths_brazil.append(item.deaths)
         aux = item.date.strftime("%b %d %Y")
         dates_brazil.append(aux)
-    print( dates_brazil)
     dados = Dados(dates_brazil, cases_brazil, deaths_brazil)
     return dados
 
@@ -74,7 +75,6 @@ def getSudesteData():
         deaths_sudeste.append(item.deaths)
         aux = item.date.strftime("%b %d %Y")
         dates_sudeste.append(aux)
-    print( dates_sudeste)
     dados = Dados2(dates_sudeste, cases_sudeste, deaths_sudeste)
     return dados
 
@@ -95,7 +95,47 @@ def getSaoPauloData():
         deaths_sp.append(item.deaths)
         aux = item.date.strftime("%b %d %Y")
         dates_sp.append(aux)
-    print( dates_sp)
     dados = Dados3(dates_sp, cases_sp, deaths_sp)
     return dados
 
+
+class Dados4():
+    def __init__(self, cases_estados, deaths_estados):
+        self.cases_estados=cases_estados
+        self.deaths_estados=deaths_estados
+
+
+def getEstadosData():
+    estados_list = EstadosData.objects.all()
+    cases_estados = []
+    deaths_estados = []
+    for item in estados_list:
+        aux1=[]
+        aux2=[]
+        aux1.append(item.name)
+        aux1.append(item.cases)
+        aux2.append(item.name)
+        aux2.append(item.deaths)
+        cases_estados.append(aux1)
+        deaths_estados.append(aux2)
+    dados = Dados4(cases_estados, deaths_estados)
+    return dados
+
+class Dados5():
+    def __init__(self, names_regiao, cases_regiao, deaths_regiao):
+        self.names_regiao=names_regiao
+        self.cases_regiao=cases_regiao
+        self.deaths_regiao=deaths_regiao
+
+
+def getRegiaoData():
+    regiao_list = RegiaoData.objects.all()
+    cases_regiao = []
+    deaths_regiao = []
+    names_regiao = []
+    for item in regiao_list:
+        cases_regiao.append(item.cases)
+        deaths_regiao.append(item.deaths)
+        names_regiao.append(item.name)
+    dados = Dados5(names_regiao, cases_regiao, deaths_regiao)
+    return dados

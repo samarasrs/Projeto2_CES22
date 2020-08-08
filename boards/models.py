@@ -28,3 +28,18 @@ class SaoPauloData(models.Model):
     def __str__(self):
         return "{}-{}-{}".format(self.date, self.cases, self.deaths)
 
+class EstadosData(models.Model):
+    name = models.CharField('name', max_length=10, unique=True)
+    cases = models.PositiveIntegerField('cases', default=0)
+    deaths = models.PositiveIntegerField('deaths', default=0)
+
+    def __str__(self):
+        return "{}-{}-{}".format(self.name, self.cases, self.deaths)
+
+class RegiaoData(models.Model):
+    name = models.CharField('name', max_length=10, unique=True)
+    cases = models.PositiveIntegerField('cases', default=0)
+    deaths = models.PositiveIntegerField('deaths', default=0)
+
+    def __str__(self):
+        return "{}-{}-{}".format(self.name, self.cases, self.deaths)
