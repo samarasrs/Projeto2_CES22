@@ -1,1 +1,1 @@
-web: gunicorn hsoteste.wsgi
+web: gunicorn myproject.wsgi
