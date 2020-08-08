@@ -15,10 +15,19 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
+  <div>
+    <h1>Samara</h1>
+    <p>Renato</p>
+  </div>
+
+
   {% block scripts %}
   {% endblock scripts %}
+  <div style="width=50px">
+      {% block content %}
+      {% endblock content %}
 
-  {% block content %}
-  {% endblock content %}
+  </div>
+
   </body>
 </html>
