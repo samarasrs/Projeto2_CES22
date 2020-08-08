@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f12dfc3a-849f-44a2-af3a-8e179ea6e8e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boards/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/boards/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+<<<<<<< HEAD
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> lendocsv
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -57,6 +63,14 @@
       <option name="presentableId" value="Default" />
       <updated>1596586611401</updated>
     </task>
+    <task id="LOCAL-00001" summary="lendo dados do arquivo csv">
+      <created>1596806098206</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596806098206</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -73,11 +87,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="lendo dados do arquivo csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="lendo dados do arquivo csv" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1842" y="187" key="SettingsEditor" timestamp="1596586897621">
       <screen x="1360" y="0" width="1920" height="1080" />
     </state>
     <state x="1842" y="187" key="SettingsEditor/1360.0.1920.1080/0.27.1360.741@1360.0.1920.1080" timestamp="1596586897621" />
+    <state x="1948" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2" timestamp="1596806099712">
+      <screen x="1360" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1948" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2/1360.0.1920.1080/0.27.1360.741@1360.0.1920.1080" timestamp="1596806099712" />
   </component>
 </project>

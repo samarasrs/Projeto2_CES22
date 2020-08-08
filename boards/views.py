@@ -4,10 +4,10 @@ from .scrap import Numeros,Scrap
 
 # Create your views here.
 #from django.http import HttpResponse
+from django.http import HttpResponse
 
 def home(request):
-    boards = Board.objects.all()
-    return render(request,'home.html',{'boards':boards})
+    return HttpResponse('Hello, World!')
 
 def index(request):
     numerodiario = Scrap()
