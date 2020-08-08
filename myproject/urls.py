@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from boards import views
+from boards.views import DataChartView
+
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    path('',DataChartView.as_view(), name='home'),
+    #url(r'^$', DataChartView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^index',views.index,name='index')
 ]
