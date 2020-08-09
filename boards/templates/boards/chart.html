@@ -1,0 +1,88 @@
+{% extends 'base.html'%}
+
+{% block title %}Charts{% endblock title %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for item in qs %}'{{item.date}}',{% endfor %}],
+            datasets: [{
+                label: ' Casos Confirmados',
+                data: [{% for item in qs %}{{item.cases}},{% endfor %}],
+                backgroundColor: [
+
+                    'rgba(54, 162, 235, 0.2)'
+
+                ],
+                borderColor: [
+
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    var myChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: [{% for item in qs %}'{{item.date}}',{% endfor %}],
+            datasets: [{
+                label: ' Óbitos Confirmados',
+                data: [{% for item in qs %}{{item.deaths}},{% endfor %}],
+                backgroundColor: [
+
+                    'rgba(255, 0, 0, 0.2)'
+
+                ],
+                borderColor: [
+
+                    'rgba(255, 0, 0, 0.2)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados no Brasil"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+});
+</script>
+
+{% endblock scripts %}
+
+
+{% block content %}
+
+<canvas id="myChart" width="50%" height="20%"></canvas>
+<canvas id="myChart2" width="50%" height="20%"></canvas>
+
+
+{% endblock content %}

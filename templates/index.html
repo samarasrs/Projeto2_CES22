@@ -1,0 +1,918 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>COVID-19</title>
+<!--
+Créditos: 
+Template 2102 Constructive
+
+http://www.tooplate.com/view/2102-constructive
+
+-->
+	<script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="//github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
+
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+	<link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+
+	<script>
+		var renderPage = true;
+
+	if(navigator.userAgent.indexOf('MSIE')!==-1
+		|| navigator.appVersion.indexOf('Trident/') > 0){
+   		/* Microsoft Internet Explorer detected in. */
+   		alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+   		renderPage = false;
+	}
+	</script>
+</head>
+
+<body>
+	<!-- Loader -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+	</div>
+	
+	<!-- Page Content -->
+	<div class="container-fluid tm-main">
+		<div class="row tm-main-row">
+
+			<!-- Sidebar -->
+			<div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 fixed-sidebar tm-bg-transparent-black">
+
+				<button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+
+				<div class="inner">
+					<nav id="tmMainNav" class="tm-main-nav">
+						<ul>
+							<li>
+								<a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img = "constructive_bg_01.jpg" data-page="#tm-section-1">
+									<i class="fas fa-home tm-nav-fa-icon"></i>
+									<span>Introdução</span>
+								</a>
+							</li>
+							<li>
+								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.png" data-page="#tm-section-2" data-page-type="carousel">
+									<i class="fas fa-users tm-nav-fa-icon"></i>
+									<span>Números</span>
+								</a>
+							</li>							
+							<li>
+								<a href="#company" class="scrolly" data-bg-img="constructive_bg_03.jpg" data-page="#tm-section-3">
+									<i class="fas fa-map tm-nav-fa-icon"></i>
+									<span>Casos por Região</span>
+								</a>
+							</li>
+							<li>
+								<a href="#contact" class="scrolly" data-bg-img="constructive_bg_04.png" data-page="#tm-section-4">
+									<i class="fas fa-comments tm-nav-fa-icon"></i>
+									<span>Dicas Gerais</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+					<!-- section 1 -->
+					<section id="tm-section-1" class="tm-section">
+						<div class="tm-bg-transparent-black tm-contact-box-pad">
+							<header class="mb-4"><h1 class="tm-text-shadow">Introdução</h1></header>		
+							<p>A COVID-19 é uma doença causada pelo coronavírus, denominado SARS-CoV-2, que apresenta um espectro clínico variando de infecções assintomáticas a quadros graves. De acordo com a Organização Mundial de Saúde, a maioria (cerca de 80%) dos pacientes com COVID-19 podem ser assintomáticos ou oligossintomáticos (poucos sintomas), e aproximadamente 20% dos casos detectados requer atendimento hospitalar por apresentarem dificuldade respiratória, dos quais aproximadamente 5% podem necessitar de suporte ventilatório.</p>
+							<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2">Continue...</a> 
+							<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
+						</div>
+					</section>
+
+					<!-- section 2 -->
+					<section id="tm-section-2" class="tm-section">
+						<div class="row mb-4">
+							<header class="col-xl-12"><h2 class="tm-text-shadow">Números Totais no Brasil</h2></header>		
+						</div>
+						<div class="row">		            
+							<div class="col-md-5 mb-4">
+								<div class = "align-middle tm-bg-transparent-black tm-border-white">
+									<h2>Casos</h2>
+									<p>{{ numerodiario.total }}</p>
+								</div>	
+							</div>
+							<div class="col-md-5 mb-4">
+								<div class = "tm-bg-transparent-black tm-border-white">
+									<h2>Mortes</h2>
+									<p>{{ numerodiario.mortes }}</p>
+								</div>	
+							</div>
+							<div class="col-md-5 mb-4">
+								<div class = "tm-bg-transparent-black tm-border-white">								
+									<h2>Recuperados</h2>
+									<p>{{ numerodiario.recuperados }}</p>
+								</div>	
+							</div>		            		          
+						</div>       		          	
+					</section>
+
+					<!-- section 3 -->
+					<section id="tm-section-3" class="tm-section">						
+						<div class="row mb-4">
+							<header class="col-xl-12"><h2 class="tm-text-shadow">Casos por Região</h2></header>
+						</div>
+						<div class="row">
+
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style=" background: white">
+									<div id="mapChart" style="height: 400px; width: 400px;"></div>
+								</div>
+
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style=" background: white">
+									<div id="mapChart2" style="height: 400px; width: 400px;"></div>
+								</div>
+
+							</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_casesR" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_deathsR" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_casesBr" width="400px" height="400px" ></canvas>
+								</div>
+							</div>	
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_deathsBr" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_casesSu" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_deathsSu" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_casesSP" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+								<div style="heigth:400px; background: white">
+									<!--<p> {{dados.dates_brazil}}</p> -->
+									<canvas id="myChart_deathsSP" width="400px" height="400px" ></canvas>
+								</div>
+							</div>
+					</section>
+
+					<!-- section 4 -->
+					<section id="tm-section-4" class="tm-section">
+						<div class="tm-bg-transparent-black tm-contact-box-pad">
+							<div class="row mb-4">
+								<div class="col-sm-12">
+									<header><h2 class="tm-text-shadow">Dicas Gerais</h2></header>
+								</div>
+							</div>			
+							<div class="row tm-page-4-content">
+								<div>
+									<h2>Quais são os sintomas?</h2>
+									<p>Os sintomas da COVID-19 podem variar de um resfriado, a uma Síndrome Gripal-SG (presença de um quadro respiratório agudo, caracterizado por, pelo menos dois dos seguintes sintomas: sensação febril ou febre associada a dor de garganta, dor de cabeça, tosse, coriza) até uma pneumonia severa. Sendo os sintomas mais comuns:</p>
+									<p>
+										<ul>
+										<li>Tosse</li>
+										<li>Febre</li>
+										<li>Coriza</li>
+										<li>Dor de garganta</li>
+										<li>Dificuldade para respirar</li>
+										<li>Perda de olfato (anosmia)</li>
+										<li>Alteração do paladar (ageusia)</li>
+										<li>Distúrbios gastrintestinais (náuseas/vômitos/diarreia)</li>
+										<li>Cansaço (astenia)</li>
+										<li>Diminuição do apetite (hiporexia)</li>
+										<li>Dispnéia ( falta de ar)</li>
+										</ul>
+									</p>
+								</div>
+								<div class="tm-img-container">
+									<div class="tm-img-slider">
+										<a href="{% static 'img/gallery-img-01.png' %}" class="tm-slider-img"><img src="{% static 'img/gallery-img-01-tn.png' %}" alt="Image" class="img-fluid"></a>
+										<a href="{% static 'img/gallery-img-02.png' %}" class="tm-slider-img"><img src="{% static 'img/gallery-img-02-tn.png' %}" alt="Image" class="img-fluid"></a>
+										<a href="{% static 'img/gallery-img-03.png' %}" class="tm-slider-img"><img src="{% static 'img/gallery-img-03-tn.png' %}" alt="Image" class="img-fluid"></a>
+									</div>
+								</div>	
+								<div>
+									<h2>Como se proteger</h2>
+									<p>As recomendações de prevenção à COVID-19 são as seguintes:</p>
+									<ul>
+										<li>Lave com frequência as mãos até a altura dos punhos, com água e sabão, ou então higienize com álcool em gel 70%. Essa frequência deve ser ampliada quando estiver em algum ambiente público (ambientes de trabalho, prédios e instalações comerciais, etc), quando utilizar estrutura de transporte público ou tocar superfícies e objetos de uso compartilhado.</li>
+										<li>Ao tossir ou espirrar, cubra nariz e boca com lenço ou com a parte interna do cotovelo.
+											Não tocar olhos, nariz, boca ou a máscara de proteção fácil com as mãos não higienizadas.
+											Se tocar olhos, nariz, boca ou a máscara, higienize sempre as mãos como já indicado.</li>
+										<li>Mantenha distância mínima de 1 (um) metro entre pessoas em lugares públicos e de convívio social. Evite abraços, beijos e apertos de mãos. Adote um comportamento amigável sem contato físico, mas sempre com um sorriso no rosto.</li>
+										<li>Higienize com frequência o celular, brinquedos das crianças e outro objetos que são utilizados com frequência.</li>
+										<li>Não compartilhe objetos de uso pessoal como talheres, toalhas, pratos e copos.</li>
+										<li>Mantenha os ambientes limpos e bem ventilados.</li>
+										<li>Evite circulação desnecessária nas ruas, estádios, teatros, shoppings, shows, cinemas e igrejas.</li>
+										<li>Se estiver doente, evite contato próximo com outras pessoas, principalmente idosos e doentes crônicos, busque orientação pelos canais on-line disponibilizados pelo SUS ou atendimento nos serviços de saúde e siga as recomendações do profissional de saúde.</li>
+										<li>Durma bem e tenha uma alimentação saudável.</li>
+										<li>Recomenda-se a utilização de máscaras em todos os ambientes.  As máscaras de tecido (caseiras/artesanais), não são Equipamentos de Proteção Individual (EPI), mas podem funcionar como uma barreira física, em especial contra a saída de gotículas potencialmente contaminadas.</li>
+								
+									</ul>
+								</div>
+							</div>
+						</div>
+					</section>					
+				</div>	<!-- .tm-content -->							
+				<footer class="footer-link">
+					<p class="tm-copyright-text">Copyright &copy; 2018 Constructive Co. Ltd. 
+                    
+                    - Design: Tooplate</p>
+				</footer>
+			</div>	<!-- row -->			
+		</div>
+		<style>
+			#preload-01{
+				background: url('{% static "/img/constructive_bg_01.jpg" %}') no-repeat -9999px -9999px; 
+			}
+			#preload-02{
+				background: url('{% static "/img/constructive_bg_02.png" %}') no-repeat -9999px -9999px; 
+			}
+			#preload-03{
+				background: url('{% static "/img/constructive_bg_03.jpg" %}') no-repeat -9999px -9999px; 
+			}
+			#preload-04{
+				background: url('{% static "/img/constructive_bg_04.jpg" %}') no-repeat -9999px -9999px; 
+			}
+
+		</style>
+
+		<div id="preload-01"></div>
+		<div id="preload-02"></div>
+		<div id="preload-03"></div>
+		<div id="preload-04"></div>
+
+		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %} "></script>
+		<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script> <!-- Slick Carousel -->
+
+		<script>
+
+		var sidebarVisible = false;
+		var currentPageID = "#tm-section-1";
+
+		// Setup Carousel
+		function setupCarousel() {
+
+			// If current page isn't Carousel page, don't do anything.
+			if($('#tm-section-4').css('display') == "none") {
+			}
+			else {	// If current page is Carousel page, set up the Carousel.
+
+				var slider = $('.tm-img-slider');
+				var windowWidth = $(window).width();
+
+				if (slider.hasClass('slick-initialized')) {
+					slider.slick('destroy');
+				}
+
+				if(windowWidth < 640) {
+					slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 1,
+	              		slidesToScroll: 1
+	              	});
+				}
+				else if(windowWidth < 992) {
+					slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 2,
+	              		slidesToScroll: 1
+	              	});
+				}
+				else {
+					// Slick carousel
+	              	slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 3,
+	              		slidesToScroll: 2
+	              	});
+				}
+
+				// Init Magnific Popup
+				$('.tm-img-slider').magnificPopup({
+				  delegate: 'a', // child items selector, by clicking on it popup will open
+				  type: 'image',
+				  gallery: {enabled:true}
+				  // other options
+				});
+      		}
+  		}
+
+  		// Setup Nav
+  		function setupNav() {
+  			// Add Event Listener to each Nav item
+	     	$(".tm-main-nav a").click(function(e){
+	     		e.preventDefault();
+		    	
+		    	var currentNavItem = $(this);
+		    	changePage(currentNavItem);
+		    	
+		    	setupCarousel();
+		    	setupFooter();
+
+		    	// Hide the nav on mobile
+		    	$("#tmSideBar").removeClass("show");
+		    });	    
+  		}
+
+  		function changePage(currentNavItem) {
+  			// Update Nav items
+  			$(".tm-main-nav a").removeClass("active");
+     		currentNavItem.addClass("active");
+
+	    	$(currentPageID).hide();
+
+	    	// Show current page
+	    	currentPageID = currentNavItem.data("page");
+	    	$(currentPageID).fadeIn(1000);
+
+	    	// Change background image
+	    	var bgImg = currentNavItem.data("bgImg");
+	    	$.backstretch("static/img/" + bgImg);		    	
+  		}
+
+  		// Setup Nav Toggle Button
+  		function setupNavToggle() {
+
+			$("#tmMainNavToggle").on("click", function(){
+				$(".sidebar").toggleClass("show");
+			});
+  		}
+
+  		// If there is enough room, stick the footer at the bottom of page content.
+  		// If not, place it after the page content
+  		function setupFooter() {
+  			
+  			var padding = 100;
+  			var footerPadding = 40;
+  			var mainContent = $("section"+currentPageID);
+  			var mainContentHeight = mainContent.outerHeight(true);
+  			var footer = $(".footer-link");
+  			var footerHeight = footer.outerHeight(true);
+  			var totalPageHeight = mainContentHeight + footerHeight + footerPadding + padding;
+  			var windowHeight = $(window).height();		
+
+  			if(totalPageHeight > windowHeight){
+  				$(".tm-content").css("margin-bottom", footerHeight + footerPadding + "px");
+  				footer.css("bottom", footerHeight + "px");  			
+  			}
+  			else {
+  				$(".tm-content").css("margin-bottom", "0");
+  				footer.css("bottom", "20px");  				
+  			}  			
+  		}
+
+  		// Everything is loaded including images.
+      	$(window).on("load", function(){
+
+      		// Render the page on modern browser only.
+      		if(renderPage) {
+				// Remove loader
+		      	$('body').addClass('loaded');
+
+		      	// Page transition
+		      	var allPages = $(".tm-section");
+
+		      	// Handle click of "Continue", which changes to next page
+		      	// The link contains data-nav-link attribute, which holds the nav item ID
+		      	// Nav item ID is then used to access and trigger click on the corresponding nav item
+		      	var linkToAnotherPage = $("a.tm-btn[data-nav-link]");
+			    
+			    if(linkToAnotherPage != null) {
+			    	
+			    	linkToAnotherPage.on("click", function(){
+			    		var navItemToHighlight = linkToAnotherPage.data("navLink");
+			    		$("a" + navItemToHighlight).click();
+			    	});
+			    }
+		      	
+		      	// Hide all pages
+		      	allPages.hide();
+
+		      	$("#tm-section-1").fadeIn();
+
+		     	// Set up background first page
+		     	var bgImg = $("#tmNavLink1").data("bgImg");
+		     	
+		     	$.backstretch("/static/img/" + bgImg, {fade: 500});
+
+		     	// Setup Carousel, Nav, and Nav Toggle
+			    setupCarousel();
+			    setupNav();
+			    setupNavToggle();
+			    setupFooter();
+
+			    // Resize Carousel upon window resize
+			    $(window).resize(function() {
+			    	setupCarousel();
+			    	setupFooter();
+			    });
+      		}	      	
+		});
+
+		</script>
+
+	</body>
+	<script>
+
+		var ctx = document.getElementById('myChart_deathsBr').getContext('2d');
+		var myChart_deathsBr = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados.dates_brazil|safe }},
+				datasets: [{
+					label: 'óbitos confirmados',
+					data: {{ dados.deaths_brazil|safe }},
+					backgroundColor: [
+
+						'rgba(255, 0, 0, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 0, 0, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados no Brasil"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+	<script>
+
+		var ctx = document.getElementById('myChart_casesBr').getContext('2d');
+		var myChart_casesBr = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados.dates_brazil|safe }},
+				datasets: [{
+					label: 'casos confirmados',
+					data: {{ dados.cases_brazil|safe }},
+					backgroundColor: [
+
+						'rgba(65, 105, 225, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(65, 105, 225, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Casos Confirmados no Brasil"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+<script>
+
+		var ctx = document.getElementById('myChart_deathsSu').getContext('2d');
+		var myChart_deathsSu = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados_sudeste.dates_sudeste|safe }},
+				datasets: [{
+					label: 'óbitos confirmados',
+					data: {{ dados_sudeste.deaths_sudeste|safe }},
+					backgroundColor: [
+
+						'rgba(255, 0, 0, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 0, 0, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados no Sudeste"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+	<script>
+
+		var ctx = document.getElementById('myChart_casesSu').getContext('2d');
+		var myChart_casesSu = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados_sudeste.dates_sudeste|safe }},
+				datasets: [{
+					label: 'casos confirmados',
+					data: {{ dados_sudeste.cases_sudeste|safe }},
+					backgroundColor: [
+
+						'rgba(65, 105, 225, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(65, 105, 225, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Casos Confirmados no Sudeste"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+
+	<script>
+
+		var ctx = document.getElementById('myChart_deathsSP').getContext('2d');
+		var myChart_deathsSP = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados_sp.dates_sp|safe }},
+				datasets: [{
+					label: 'óbitos confirmados',
+					data: {{ dados_sp.deaths_sp|safe }},
+					backgroundColor: [
+
+						'rgba(255, 0, 0, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 0, 0, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados em São Paulo"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+	<script>
+
+		var ctx = document.getElementById('myChart_casesSP').getContext('2d');
+		var myChart_casesSP = new Chart(ctx, {
+			type: 'line',
+
+			data: {
+				labels: {{ dados_sp.dates_sp|safe }},
+				datasets: [{
+					label: 'casos confirmados',
+					data: {{ dados_sp.cases_sp|safe }},
+					backgroundColor: [
+
+						'rgba(65, 105, 225, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(65, 105, 225, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: false},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Casos Confirmados em São Paulo"
+            },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	</script>
+
+	<script>
+
+		// Prepare demo data
+		// Data is joined to map using value of 'hc-key' property by default.
+		// See API docs for 'joinBy' for more info on linking data and map.
+		var data = {{ dados_estados.cases_estados|safe }};
+
+		// Create the chart
+		Highcharts.mapChart('mapChart', {
+			chart: {
+				map: 'countries/br/br-all'
+			},
+
+			title: {
+				text: 'Casos confimados por Estado'
+			},
+
+			subtitle: {
+				text: ''
+			},
+
+			mapNavigation: {
+				enabled: true,
+				buttonOptions: {
+					verticalAlign: 'bottom'
+				}
+			},
+
+			colorAxis: {
+				min: 0
+			},
+
+			series: [{
+				data: data,
+				name: 'Casos confirmados',
+				states: {
+					hover: {
+						color: '#BADA55'
+					}
+				},
+				dataLabels: {
+					enabled: false,
+					format: '{point.name}'
+				}
+			}]
+		});
+
+
+	</script>
+
+<script>
+
+		// Prepare demo data
+		// Data is joined to map using value of 'hc-key' property by default.
+		// See API docs for 'joinBy' for more info on linking data and map.
+
+		var data = {{ dados_estados.deaths_estados|safe }};
+
+		// Create the chart
+		Highcharts.mapChart('mapChart2', {
+			chart: {
+				map: 'countries/br/br-all'
+			},
+
+			title: {
+				text: 'Óbitos confimados por Estado'
+			},
+
+			subtitle: {
+				text: ''
+			},
+
+			mapNavigation: {
+				enabled: true,
+				buttonOptions: {
+					verticalAlign: 'bottom'
+				}
+			},
+
+			colorAxis: {
+				min: 0
+			},
+
+			series: [{
+				data: data,
+				name: 'Óbitos confirmados',
+				states: {
+					hover: {
+						color: '#BADA55'
+					}
+				},
+				dataLabels: {
+					enabled: false,
+					format: '{point.name}'
+				}
+			}]
+		});
+
+
+	</script>
+
+	<script>
+
+		var ctx = document.getElementById('myChart_deathsR').getContext('2d');
+		var myChart_deathsR = new Chart(ctx, {
+			type: 'polarArea',
+
+			data: {
+				labels: {{ dados_regiao.names_regiao|safe }},
+				datasets: [{
+					label: 'óbitos confirmados',
+					data: {{ dados_regiao.deaths_regiao|safe }},
+					backgroundColor: [
+
+						'rgba(255, 99, 132, 0.5)',
+						'rgba(54, 162, 235, 0.5)',
+						'rgba(255, 206, 86, 0.5)',
+						'rgba(75, 192, 192, 0.5)',
+						'rgba(153, 102, 255, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: true},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Óbitos Confirmados por Região"
+            },
+			}
+		});
+
+
+
+	</script>
+	<script>
+
+		var ctx = document.getElementById('myChart_casesR').getContext('2d');
+		var myChart_casesR = new Chart(ctx, {
+			type: 'polarArea',
+
+			data: {
+				labels: {{ dados_regiao.names_regiao|safe }},
+				datasets: [{
+					label: 'casos confirmados',
+					data: {{ dados_regiao.cases_regiao|safe }},
+					backgroundColor: [
+
+						'rgba(255, 99, 132, 0.5)',
+						'rgba(54, 162, 235, 0.5)',
+						'rgba(255, 206, 86, 0.5)',
+						'rgba(75, 192, 192, 0.5)',
+						'rgba(153, 102, 255, 0.5)'
+
+					],
+					borderColor: [
+
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)'
+
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {legend:{display: true},
+            title:{
+            display: true,
+            fontSize: 20,
+            text: "Casos Confirmados por Região"
+            },
+			}
+
+		});
+
+
+
+	</script>
+</html>
