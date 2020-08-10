@@ -2,7 +2,7 @@
 
 Versão do Python 3.6.9
 
-Antes de utilizar, deve-se instalar as bibliotecas contido em requirements.txt:
+Antes de utilizar, deve-se instalar as bibliotecas contidas em requirements.txt:
 
 $ pip install -r requirements.txt 
 
