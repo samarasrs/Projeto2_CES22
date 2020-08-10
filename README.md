@@ -12,6 +12,6 @@ O repositório está com as mesmas configurações utilizadas no heroku, portant
 $ echo 'DATABASE_URL=sqlite:///db.sqlite3' > .env
 
 
-Deve-se baixar o arquivo db.sqlite3. Para isso extraia no arquivo "db.zip" contido na pasta "csv" no diretório raiz
+Deve-se baixar o arquivo db.sqlite3. Para isso extraia o arquivo "db.zip" contido na pasta "csv" no diretório raiz
 
 Login e senha do banco está no vídeo apresentado
