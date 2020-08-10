@@ -17,11 +17,11 @@ class DataChartView(TemplateView):
 
 
 def home(request):
-    numerodiario = Scrap()
-    dates_brazil, cases_brazil, deaths_brazil = getBrazilData()
-    context = {'numerodiario': numerodiario, 'dates_brazil': dates_brazil, 'cases_brazil': cases_brazil,'deaths_brazil': deaths_brazil,
-               }
-    return render(request, 'home.html', context)
+#    numerodiario = Scrap()
+#    dates_brazil, cases_brazil, deaths_brazil = getBrazilData()
+#    context = {'numerodiario': numerodiario, 'dates_brazil': dates_brazil, 'cases_brazil': #cases_brazil,'deaths_brazil': deaths_brazil,
+#               }
+    return render(request, 'home.html')
 
 
 def index(request):
